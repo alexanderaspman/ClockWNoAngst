@@ -10,14 +10,16 @@ import Firebase
 
 
 class FirestoreManager:ObservableObject{
-    @Published var title: String = ""
-   @Published var check: Bool = false
-    @Published var checked: String =  ""
+    @Published var myTask: String = ""
     
-    func fetchNotes(){
+    init(){
+        fetchNotes()
+             fetchAllNotes()
+        }
+       func fetchNotes(){
         let db =  Firestore.firestore()
         
-        let docRef = db.collection("task").document("MyTask")
+        let docRef = db.collection("task").document("structTaskData")
         
         docRef.getDocument{(document,error) in
             guard error == nil else {
@@ -28,10 +30,10 @@ class FirestoreManager:ObservableObject{
                 let data = document.data()
                 if let data = data{
                     print("print data", data)
-                    self.title = data["title"] as? String ?? ""
-                   self.check = data["check"] != nil
-                    self.checked = data["circle"] as? String ?? ""
+                    self.myTask = data["title"] as? String ?? ""
+                   
 
+                   
                 }
                 
             }
@@ -41,10 +43,6 @@ class FirestoreManager:ObservableObject{
         
     }
                 
-    init(){
-        fetchNotes()
-        fetchAllNotes()
-        }
    
     func fetchAllNotes(){
         let db =  Firestore.firestore()

@@ -13,7 +13,10 @@ struct ContentView: View {
     @EnvironmentObject var firestoreManager: FirestoreManager
 
     @State var email: String
+    @State var createEmail: String
     @State var password : String
+    @State var createPassword : String
+
     @Binding var showLogin : Bool
     
     @State var text :String
@@ -44,12 +47,13 @@ struct ContentView: View {
             
             if !isSuccessfull {
                 //  ShowlLoginView
-               loginView
+                Text("My task is\(firestoreManager.myTask)")
+              
                 
             }
             else {
                 //SwiftUIView(focusOnCircle: false)
-                Text("My task is\(firestoreManager.task)")
+              
             }
             
         }
@@ -65,6 +69,28 @@ struct ContentView: View {
             }
         }
     }
+    var createAccount : some View{
+        VStack{
+            
+            HStack{
+                Image(systemName: "person.crop.circle.fill").foregroundColor(Color(#colorLiteral(red: 0.6729827523, green: 0.9283120632, blue: 0.716257751, alpha: 1)
+                                                                                  )).frame(width:44,height:44).font(.system(size: 24,weight: .bold ))
+                    .background(Color(color4)).clipShape(RoundedRectangle(cornerRadius: 16,style: .continuous)).shadow(color: Color(color3), radius: 5, x: 0,y: 5)
+                TextField("Your email".uppercased(), text: $createEmail).keyboardType(.emailAddress).frame(width:270,height:32,alignment: .leading).background(.white).cornerRadius(5).frame(height: 60)
+                
+            }
+            HStack{
+                Image(systemName: "lock.fill").foregroundColor(Color(#colorLiteral(red: 0.6729827523, green: 0.9283120632, blue: 0.716257751, alpha: 1)
+                                                                    )).frame(width:44,height:44).font(.system(size: 24,weight: .bold ))                           .background(Color(color4)).clipShape(RoundedRectangle(cornerRadius: 16,style: .continuous)).shadow(color: Color(color3), radius: 5, x: 0,y: 5)
+                SecureField("Your password".uppercased(), text: $createPassword).keyboardType(.emailAddress).frame(width:270,height:42,alignment: .leading).background(.white).cornerRadius(5).frame(height: 80)
+                
+            }
+            
+            
+            Button(action: {login()}, label: {Text("Sign in").foregroundColor(.yellow).frame(width: 120,height:33,alignment: .center).background(Color(color2)).cornerRadius(14).padding(.horizontal,30)})
+        }.frame(height: 235).frame(maxWidth: .infinity).background(Color(color5)).clipShape(RoundedRectangle(cornerRadius: 30,style: .continuous)).shadow(color: Color.black.opacity(0.2), radius: 20).offset(y:60).padding(.horizontal,20)    }
+
+
     var loginView: some View{
         VStack{
             
@@ -161,7 +187,7 @@ private let itemFormatter: DateFormatter = {
 */
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(email: "", password:"", showLogin: .constant(false), text: "", showCreateAccount: false).environmentObject(FirestoreManager())
+        ContentView(email: "",createEmail: "", password:"",createPassword: "", showLogin: .constant(false), text: "", showCreateAccount: false).environmentObject(FirestoreManager())
         
         
         

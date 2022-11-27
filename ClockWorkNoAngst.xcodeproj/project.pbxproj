@@ -21,6 +21,13 @@
 		5D663E412933AB8900086F43 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D663E402933AB8900086F43 /* FirebaseFirestore */; };
 		5D663E432933AB8900086F43 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5D663E422933AB8900086F43 /* FirebaseFirestoreSwift */; };
 		5DBFC8FD2933C07B005BC8EE /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC8FC2933C07A005BC8EE /* FirestoreManager.swift */; };
+		5DBFC9002933DDD9005BC8EE /* DatabaseConnectionUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC8FF2933DDD9005BC8EE /* DatabaseConnectionUser.swift */; };
+		5DBFC9022933E309005BC8EE /* AdDataFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC9012933E309005BC8EE /* AdDataFirestore.swift */; };
+		5DBFC9062933EBCD005BC8EE /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC9052933EBCD005BC8EE /* TaskRow.swift */; };
+		5DBFC9092933EC84005BC8EE /* BackGroundAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC9082933EC84005BC8EE /* BackGroundAnimations.swift */; };
+		5DBFC90B2933ECDC005BC8EE /* AnimatableFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC90A2933ECDC005BC8EE /* AnimatableFont.swift */; };
+		5DBFC90D2933ED01005BC8EE /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC90C2933ED01005BC8EE /* TaskView.swift */; };
+		5DBFC90F2933EE32005BC8EE /* AddtaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC90E2933EE32005BC8EE /* AddtaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +62,13 @@
 		5D663E2E2933A7C500086F43 /* ClockWorkNoAngstUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockWorkNoAngstUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5D663E3B2933A94000086F43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DBFC8FC2933C07A005BC8EE /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		5DBFC8FF2933DDD9005BC8EE /* DatabaseConnectionUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConnectionUser.swift; sourceTree = "<group>"; };
+		5DBFC9012933E309005BC8EE /* AdDataFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDataFirestore.swift; sourceTree = "<group>"; };
+		5DBFC9052933EBCD005BC8EE /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
+		5DBFC9082933EC84005BC8EE /* BackGroundAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundAnimations.swift; sourceTree = "<group>"; };
+		5DBFC90A2933ECDC005BC8EE /* AnimatableFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableFont.swift; sourceTree = "<group>"; };
+		5DBFC90C2933ED01005BC8EE /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		5DBFC90E2933EE32005BC8EE /* AddtaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddtaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +122,8 @@
 		5D663E0B2933A7C000086F43 /* ClockWorkNoAngst */ = {
 			isa = PBXGroup;
 			children = (
+				5DBFC9072933EC4F005BC8EE /* Modifiers */,
+				5DBFC9042933EBAE005BC8EE /* tasks */,
 				5DBFC8FE2933C711005BC8EE /* Views */,
 				5DBFC8FB2933C04E005BC8EE /* Managers */,
 				5D663E0C2933A7C000086F43 /* ClockWorkNoAngstApp.swift */,
@@ -149,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				5DBFC8FC2933C07A005BC8EE /* FirestoreManager.swift */,
+				5DBFC8FF2933DDD9005BC8EE /* DatabaseConnectionUser.swift */,
+				5DBFC9012933E309005BC8EE /* AdDataFirestore.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -159,6 +177,25 @@
 				5D663E0E2933A7C000086F43 /* ContentView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5DBFC9042933EBAE005BC8EE /* tasks */ = {
+			isa = PBXGroup;
+			children = (
+				5DBFC9052933EBCD005BC8EE /* TaskRow.swift */,
+				5DBFC90C2933ED01005BC8EE /* TaskView.swift */,
+				5DBFC90E2933EE32005BC8EE /* AddtaskView.swift */,
+			);
+			path = tasks;
+			sourceTree = "<group>";
+		};
+		5DBFC9072933EC4F005BC8EE /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				5DBFC9082933EC84005BC8EE /* BackGroundAnimations.swift */,
+				5DBFC90A2933ECDC005BC8EE /* AnimatableFont.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,11 +337,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DBFC90B2933ECDC005BC8EE /* AnimatableFont.swift in Sources */,
 				5D663E162933A7C500086F43 /* Persistence.swift in Sources */,
+				5DBFC9002933DDD9005BC8EE /* DatabaseConnectionUser.swift in Sources */,
 				5DBFC8FD2933C07B005BC8EE /* FirestoreManager.swift in Sources */,
+				5DBFC9062933EBCD005BC8EE /* TaskRow.swift in Sources */,
 				5D663E0F2933A7C000086F43 /* ContentView.swift in Sources */,
 				5D663E192933A7C500086F43 /* ClockWorkNoAngst.xcdatamodeld in Sources */,
+				5DBFC90F2933EE32005BC8EE /* AddtaskView.swift in Sources */,
 				5D663E0D2933A7C000086F43 /* ClockWorkNoAngstApp.swift in Sources */,
+				5DBFC9022933E309005BC8EE /* AdDataFirestore.swift in Sources */,
+				5DBFC90D2933ED01005BC8EE /* TaskView.swift in Sources */,
+				5DBFC9092933EC84005BC8EE /* BackGroundAnimations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

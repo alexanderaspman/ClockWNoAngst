@@ -30,6 +30,10 @@
 		5DBFC90F2933EE32005BC8EE /* AddtaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC90E2933EE32005BC8EE /* AddtaskView.swift */; };
 		5DBFC9112934004A005BC8EE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC9102934004A005BC8EE /* Item.swift */; };
 		5DBFC913293459AB005BC8EE /* UserDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC912293459AA005BC8EE /* UserDocument.swift */; };
+		5DBFC91A2934855F005BC8EE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5DBFC9192934855F005BC8EE /* RealmSwift */; };
+		5DBFC91D2934871B005BC8EE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5DBFC91C2934871B005BC8EE /* Realm */; };
+		5DBFC91F2934876A005BC8EE /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC91E2934876A005BC8EE /* RealmManager.swift */; };
+		5DBFC92129348900005BC8EE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC92029348900005BC8EE /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,8 @@
 		5DBFC90E2933EE32005BC8EE /* AddtaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddtaskView.swift; sourceTree = "<group>"; };
 		5DBFC9102934004A005BC8EE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5DBFC912293459AA005BC8EE /* UserDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocument.swift; sourceTree = "<group>"; };
+		5DBFC91E2934876A005BC8EE /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		5DBFC92029348900005BC8EE /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +86,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DBFC91A2934855F005BC8EE /* RealmSwift in Frameworks */,
 				5D663E3F2933AB8900086F43 /* FirebaseAuth in Frameworks */,
 				5D663E412933AB8900086F43 /* FirebaseFirestore in Frameworks */,
 				5D663E432933AB8900086F43 /* FirebaseFirestoreSwift in Frameworks */,
+				5DBFC91D2934871B005BC8EE /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +118,7 @@
 				5D663E212933A7C500086F43 /* ClockWorkNoAngstTests */,
 				5D663E2B2933A7C500086F43 /* ClockWorkNoAngstUITests */,
 				5D663E0A2933A7C000086F43 /* Products */,
+				5DBFC91B2934871B005BC8EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,6 +181,8 @@
 				5DBFC8FF2933DDD9005BC8EE /* DatabaseConnectionUser.swift */,
 				5DBFC9012933E309005BC8EE /* AdDataFirestore.swift */,
 				5DBFC912293459AA005BC8EE /* UserDocument.swift */,
+				5DBFC91E2934876A005BC8EE /* RealmManager.swift */,
+				5DBFC92029348900005BC8EE /* Task.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -204,6 +215,13 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		5DBFC91B2934871B005BC8EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -224,6 +242,8 @@
 				5D663E3E2933AB8900086F43 /* FirebaseAuth */,
 				5D663E402933AB8900086F43 /* FirebaseFirestore */,
 				5D663E422933AB8900086F43 /* FirebaseFirestoreSwift */,
+				5DBFC9192934855F005BC8EE /* RealmSwift */,
+				5DBFC91C2934871B005BC8EE /* Realm */,
 			);
 			productName = ClockWorkNoAngst;
 			productReference = 5D663E092933A7C000086F43 /* ClockWorkNoAngst.app */;
@@ -299,6 +319,7 @@
 			mainGroup = 5D663E002933A7C000086F43;
 			packageReferences = (
 				5D663E3D2933AB8900086F43 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5DBFC9182934855E005BC8EE /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 5D663E0A2933A7C000086F43 /* Products */;
 			projectDirPath = "";
@@ -345,11 +366,13 @@
 			files = (
 				5DBFC90B2933ECDC005BC8EE /* AnimatableFont.swift in Sources */,
 				5D663E162933A7C500086F43 /* Persistence.swift in Sources */,
+				5DBFC91F2934876A005BC8EE /* RealmManager.swift in Sources */,
 				5DBFC9002933DDD9005BC8EE /* DatabaseConnectionUser.swift in Sources */,
 				5DBFC8FD2933C07B005BC8EE /* FirestoreManager.swift in Sources */,
 				5DBFC9062933EBCD005BC8EE /* TaskRow.swift in Sources */,
 				5D663E0F2933A7C000086F43 /* ContentView.swift in Sources */,
 				5D663E192933A7C500086F43 /* ClockWorkNoAngst.xcdatamodeld in Sources */,
+				5DBFC92129348900005BC8EE /* Task.swift in Sources */,
 				5DBFC9112934004A005BC8EE /* Item.swift in Sources */,
 				5DBFC90F2933EE32005BC8EE /* AddtaskView.swift in Sources */,
 				5DBFC913293459AB005BC8EE /* UserDocument.swift in Sources */,
@@ -691,6 +714,14 @@
 				kind = branch;
 			};
 		};
+		5DBFC9182934855E005BC8EE /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -708,6 +739,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5D663E3D2933AB8900086F43 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		5DBFC9192934855F005BC8EE /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DBFC9182934855E005BC8EE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		5DBFC91C2934871B005BC8EE /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DBFC9182934855E005BC8EE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -188,16 +188,17 @@ private let itemFormatter: DateFormatter = {
 
 import SwiftUI
 import Firebase
+import RealmSwift
 
 struct ContentView: View {
-    
+    @StateObject var realManager = RealmManager()
     @StateObject var dbConnection = DatabaseConnection()
     
     var body: some View {
         
         if dbConnection.userLoggedIn {
             
-            MainPage(dbConnection: dbConnection)
+            HomeTaskView( title: "").environmentObject(RealmManager())
             
         } else {
             
@@ -210,8 +211,8 @@ struct ContentView: View {
     }
 }
 
-struct MainPage: View {
-    @ObservedObject var dbConnection: DatabaseConnection
+struct TaskView: View {
+    @EnvironmentObject var realmManager: RealmManager
     @State var showPopup = false
     
     var body: some View {
@@ -219,104 +220,17 @@ struct MainPage: View {
         ZStack {
             VStack {
                 
-                if let userDocument = dbConnection.userDocument {
-                    
-                    List() {
-                        
-                        ForEach(userDocument.entries) {
-                            entry in
-                            
-                            Text(entry.title)
-                            
-                            
-                        }
-                        
-                    }
-                    
+                
+                if showPopup {
+                    HomeTaskView( title: "").environmentObject(realmManager)
                 }
                 
-                Button(action: {
-                    withAnimation {
-                        showPopup = true
-                    }
-                }, label: {
-                    Text("Add entry").padding()
-                })
-                
-            }
-            
-            if showPopup {
-                PopupView(dbConnection: dbConnection, showPopup: $showPopup)
             }
             
         }
         
     }
     
-}
-
-
-struct PopupView: View {
-    @ObservedObject var dbConnection: DatabaseConnection
-    @Binding var showPopup: Bool
-    
-    @State var title = ""
-    @State var description = ""
-    
-    
-    var body: some View {
-        
-        VStack(spacing: 20) {
-            
-            
-            Spacer()
-            
-            Text("Add entry").font(.title).bold()
-            
-            
-            VStack(alignment: .leading) {
-                
-                Text("Ange titel")
-                TextField("", text: $title).textFieldStyle(.roundedBorder).foregroundColor(.black)
-                
-                Text("Ange beskrivning")
-                TextEditor(text: $description).cornerRadius(5).foregroundColor(.black)
-                
-            }.padding()
-            
-            
-            Button(action: {
-                
-                if title == "" || description == "" {
-                    return
-                }
-                
-                dbConnection.addEntryToDb(entry: JournalEntry(title: title, description: description, date: Date()))
-                
-                showPopup = false
-                
-                
-            }, label: {
-                Text("Save").bold()
-            }).padding().background(.white).foregroundColor(.brown).cornerRadius(7)
-            
-            
-            
-            Button(action: {
-                showPopup = false
-            }, label: {
-                Text("Cancel")
-            })
-            
-            Spacer()
-            
-        }.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.6, alignment: .center)
-            .background(.brown)
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            .shadow(radius: 10)
-            .transition(.scale)
-    }
 }
 
 
@@ -411,7 +325,7 @@ struct LoginPage: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(dbConnection: DatabaseConnection()).environmentObject(FirestoreManager(titles: "", checks: false, checkered: ""))
+        ContentView(dbConnection: DatabaseConnection()).environmentObject(RealmManager())
         
         
         

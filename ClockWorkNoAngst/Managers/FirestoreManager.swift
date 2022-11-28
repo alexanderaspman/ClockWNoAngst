@@ -3,7 +3,7 @@
 //  ClockWorkNoAngst
 //
 //  Created by alexander aspman on 2022-11-27.
-//
+/*
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
@@ -15,11 +15,11 @@ class FirestoreManager:ObservableObject{
     @Published var checks: Bool
     @Published var checkered: String = ""
 
-    init(titles:String,checks:Bool,checkered:String){
-     fetchNotes()
+    // init(titles:String,checks:Bool,checkered:String){
+        //   fetchNotes()
      
-    fetchAllNotes()
-        }
+  //  fetchAllNotes()
+        
     
     
        func fetchNotes(){
@@ -74,6 +74,6 @@ class FirestoreManager:ObservableObject{
     
     
 }
-        
+        */
   
 

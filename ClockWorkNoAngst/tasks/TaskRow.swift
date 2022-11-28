@@ -2,19 +2,21 @@
 import SwiftUI
 import  EventKitUI
 import UIKit
+import RealmSwift
 import Firebase
 import FirebaseFirestoreSwift
 struct TaskRow: View {
-    @State var check:Bool
-    @State var title : String
-    @State var text=[]
-    
+   @State var completed:Bool = false
+   @State  var title : String = ""
+     var text:[String]?
+
    // @Binding var buttonAction: () -> Void
-    var db = Firestore.firestore()
-    
+    @EnvironmentObject var realmManager : RealmManager
     var color1:CGColor =  #colorLiteral(red: 0.3116869926, green: 0.3075950146, blue: 0.3075473309, alpha: 1)
     
-    var taskrowInformation = TaskConstruction(check: (false), title: .constant(""))
+ // var taskrowInformation = TaskConstruction( completed: false, title: .constant(title), text: [String]?)
+                                              
+    
     var body: some View {
         VStack{
                 
@@ -23,8 +25,8 @@ struct TaskRow: View {
                 HStack(content: {
                     Text(title).foregroundColor(.primary).animatableFonts(size: 28, weight: .bold, design: .rounded)
                     
-                    Image(systemName: text[check ? 0 : 1 ] as! String).animatableFonts(size: 30, weight: .heavy, design:.none).onTapGesture {
-                        check.toggle()}
+                    Image(systemName: completed ?  "checkmark.circle" : "circle") .animatableFonts(size: 30, weight: .heavy, design:.none)
+                    
                     
                 })
                 
@@ -42,24 +44,17 @@ struct TaskRow: View {
         }
         
 
-struct getTasksFirestore:View{
-    @State var buttonAction: () -> Void
-
-    var body: some View{
-        Button(action: buttonAction, label: {Text("Create task")})
-    }
-}
 
 struct TaskConstruction:Identifiable{
     var id = UUID()
-   @State var check: Bool
-    @Binding var title:String
+   @State var completed: Bool
+    @State var title:String
     @State var text =  ["checkmark.circle","circle"]
 }
 
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
-        TaskRow(check:false, title: "Gör mat", text: [])
+        TaskRow(completed:false, title: "Gör mat", text: []).environmentObject(RealmManager())
     }
     
 }

@@ -15,7 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct ClockWorkNoAngst: App {
-    @StateObject var firestoreManager = FirestoreManager(titles: "", checks: false, checkered: "")
+    @StateObject var realmManager = RealmManager()
     
     
   //register app delegate for Firebase setup
@@ -25,7 +25,7 @@ struct ClockWorkNoAngst: App {
   var body: some Scene {
     WindowGroup {
       NavigationView {
-          ContentView(dbConnection: DatabaseConnection()).environmentObject(firestoreManager)
+          ContentView(dbConnection: DatabaseConnection()).environmentObject(realmManager)
           
           //ContentView(firestoreManager: Firestore(), email: "", createEmail: "", password: "", createPassword: "", showLogin: .constant(false), text: "", showCreateAccount: false)
       }

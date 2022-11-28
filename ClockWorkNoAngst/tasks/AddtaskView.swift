@@ -1,10 +1,11 @@
 import SwiftUI
 import Firebase
+import RealmSwift
 struct AddTaskRow: View {
-    @EnvironmentObject var firestoreManager : FirestoreManager
+    @EnvironmentObject var realmManager : RealmManager
     @Binding var toggleShowCreateTask:Bool
-    @State  var title : String = ""
-    var db = Firestore.firestore()
+    @State private var title : String = ""
+//var db = Firestore.firestore()
    @State var items = [ItemData]()
     var colorBtn:CGColor = #colorLiteral(red: 0.09359260344, green: 0.2222320094, blue: 0.09414240218, alpha: 0.8470588235)
     
@@ -18,73 +19,35 @@ struct AddTaskRow: View {
             TextField("Enter task here",text : $title).textFieldStyle(.roundedBorder)
             
             Button(action: {
-                AddTask(item: ItemData(title: title, check: false,checked: "circle"))
-                    .onTapGesture {
-                        withAnimation(.spring(response: 0.4,dampingFraction: 0.6).speed(2)){
-                            ForEach(items) { item in
-                                HomeTaskView(item.title)
-                            }
-                            toggleShowCreateTask.toggle()}
-                    }
+                if title != ""{
+                    realmManager.addTask(taskTitle: title, toggleShowCreateTask: $toggleShowCreateTask)           }},label:{Text("create task").background(Color(colorBtn).foregroundColor(Color(colorBtnText)).frame(width: 170,height: 50,alignment: .bottomTrailing).cornerRadius(20))})
+            .onTapGesture {
+                withAnimation(.spring(response: 0.4,dampingFraction: 0.6).speed(2)){
+                    toggleShowCreateTask.toggle()
+                    
+                }
                 
-                    self.toggleShowCreateTask.toggle()
-            }, label: {Text("Add text")}).animatableFonts(size: 24, weight: .regular, design: .serif).foregroundColor(Color(colorBtnText)).padding().padding(.horizontal).background(Color(colorBtn).cornerRadius(30))}
-            
-       
-       
-            
-        
-.onAppear{
-    listenToStore()}
-        
+                
+                
+                
+                
+                
+                
+            }
+                
+                
+                
+                
+                
+            }.background(ignoresSafeAreaEdges: .all).background(Color(color1))
     }
     
     
-    func AddTask(item:ItemData){
-        do {
-          let result = try db.collection("userTask").addDocument(from: item)
-        }catch{
-            print("error saving data")
-        }
-        
-        
-        
-        
-        
-    }
-    
-    func listenToStore(){
-        db.collection("userTask").addSnapshotListener{snapshot,error in
-            guard let snapshot = snapshot else {
-                return
-            }
-            if let error = error{
-                print("error \(error)")
-                return
-            }
-            items.removeAll()
-            
-            for document in snapshot.documents{
-                let result = Result {
-                    try document.data(as: ItemData.self)
-                }
-                switch result {
-                case .success(let item): items.append(item)
-                case .failure(let error):
-                    print("error")
-                    break
-                }
-            }
-            
-            
-        }
-        
-    }
    
 }
 
 struct AddTaskRow_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskRow(toggleShowCreateTask:.constant (false))
+        AddTaskRow(toggleShowCreateTask:.constant (false)).environmentObject(RealmManager())
     }
 }

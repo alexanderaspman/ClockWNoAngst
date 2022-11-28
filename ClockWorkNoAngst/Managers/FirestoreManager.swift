@@ -6,20 +6,26 @@
 //
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
 
 
 
 class FirestoreManager:ObservableObject{
-    @Published var myTask: String = ""
-    
-    init(){
-        fetchNotes()
-             fetchAllNotes()
+    @Published var titles: String = ""
+    @Published var checks: Bool
+    @Published var checkered: String = ""
+
+    init(titles:String,checks:Bool,checkered:String){
+     fetchNotes()
+     
+    fetchAllNotes()
         }
+    
+    
        func fetchNotes(){
         let db =  Firestore.firestore()
         
-        let docRef = db.collection("task").document("structTaskData")
+        let docRef = db.collection("userTask").document("userTask")
         
         docRef.getDocument{(document,error) in
             guard error == nil else {
@@ -30,8 +36,9 @@ class FirestoreManager:ObservableObject{
                 let data = document.data()
                 if let data = data{
                     print("print data", data)
-                    self.myTask = data["title"] as? String ?? ""
-                   
+                    self.titles = data["title"] as? String ?? ""
+                    self.checks = data["check"] != nil
+                    self.checkered = data["checked"] as? String ?? ""
 
                    
                 }
@@ -47,7 +54,7 @@ class FirestoreManager:ObservableObject{
     func fetchAllNotes(){
         let db =  Firestore.firestore()
         
-      db.collection("tasks").getDocuments(){ (QuerySnapshot, error) in
+        db.collection("userTask").getDocuments(){ (QuerySnapshot, error) in
           
           
                   

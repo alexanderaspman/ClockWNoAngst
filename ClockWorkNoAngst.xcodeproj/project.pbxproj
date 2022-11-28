@@ -28,6 +28,8 @@
 		5DBFC90B2933ECDC005BC8EE /* AnimatableFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC90A2933ECDC005BC8EE /* AnimatableFont.swift */; };
 		5DBFC90D2933ED01005BC8EE /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC90C2933ED01005BC8EE /* TaskView.swift */; };
 		5DBFC90F2933EE32005BC8EE /* AddtaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC90E2933EE32005BC8EE /* AddtaskView.swift */; };
+		5DBFC9112934004A005BC8EE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC9102934004A005BC8EE /* Item.swift */; };
+		5DBFC913293459AB005BC8EE /* UserDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBFC912293459AA005BC8EE /* UserDocument.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		5DBFC90A2933ECDC005BC8EE /* AnimatableFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableFont.swift; sourceTree = "<group>"; };
 		5DBFC90C2933ED01005BC8EE /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		5DBFC90E2933EE32005BC8EE /* AddtaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddtaskView.swift; sourceTree = "<group>"; };
+		5DBFC9102934004A005BC8EE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		5DBFC912293459AA005BC8EE /* UserDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocument.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,7 @@
 				5DBFC8FC2933C07A005BC8EE /* FirestoreManager.swift */,
 				5DBFC8FF2933DDD9005BC8EE /* DatabaseConnectionUser.swift */,
 				5DBFC9012933E309005BC8EE /* AdDataFirestore.swift */,
+				5DBFC912293459AA005BC8EE /* UserDocument.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 				5DBFC9052933EBCD005BC8EE /* TaskRow.swift */,
 				5DBFC90C2933ED01005BC8EE /* TaskView.swift */,
 				5DBFC90E2933EE32005BC8EE /* AddtaskView.swift */,
+				5DBFC9102934004A005BC8EE /* Item.swift */,
 			);
 			path = tasks;
 			sourceTree = "<group>";
@@ -344,7 +350,9 @@
 				5DBFC9062933EBCD005BC8EE /* TaskRow.swift in Sources */,
 				5D663E0F2933A7C000086F43 /* ContentView.swift in Sources */,
 				5D663E192933A7C500086F43 /* ClockWorkNoAngst.xcdatamodeld in Sources */,
+				5DBFC9112934004A005BC8EE /* Item.swift in Sources */,
 				5DBFC90F2933EE32005BC8EE /* AddtaskView.swift in Sources */,
+				5DBFC913293459AB005BC8EE /* UserDocument.swift in Sources */,
 				5D663E0D2933A7C000086F43 /* ClockWorkNoAngstApp.swift in Sources */,
 				5DBFC9022933E309005BC8EE /* AdDataFirestore.swift in Sources */,
 				5DBFC90D2933ED01005BC8EE /* TaskView.swift in Sources */,

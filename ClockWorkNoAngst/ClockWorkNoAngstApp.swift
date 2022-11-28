@@ -3,6 +3,7 @@ import Firebase
 import FirebaseFirestoreSwift
 
 
+
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -14,7 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct ClockWorkNoAngst: App {
-    @StateObject var firestoreManager = FirestoreManager()
+    @StateObject var firestoreManager = FirestoreManager(titles: "", checks: false, checkered: "")
     
     
   //register app delegate for Firebase setup
@@ -24,7 +25,9 @@ struct ClockWorkNoAngst: App {
   var body: some Scene {
     WindowGroup {
       NavigationView {
-          ContentView(email: "",createEmail: "", password: "",createPassword: "", showLogin: .constant(false), text: "", startAnimation: false, showCreateAccount: false,  isSuccessfull: false).environmentObject(firestoreManager)
+          ContentView(dbConnection: DatabaseConnection()).environmentObject(firestoreManager)
+          
+          //ContentView(firestoreManager: Firestore(), email: "", createEmail: "", password: "", createPassword: "", showLogin: .constant(false), text: "", showCreateAccount: false)
       }
     }
   }

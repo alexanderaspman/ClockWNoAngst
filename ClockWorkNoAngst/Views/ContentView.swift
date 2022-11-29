@@ -197,7 +197,11 @@ struct ContentView: View {
         
         if dbConnection.userLoggedIn {
             
+<<<<<<< Updated upstream
             MainPage(dbConnection: dbConnection)
+=======
+            TabBar(startShow: false, switchCard: false, title: "").environmentObject(RealmManager())
+>>>>>>> Stashed changes
             
         } else {
             

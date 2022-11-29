@@ -100,23 +100,6 @@ class DatabaseConnection: ObservableObject {
     // I vårat fall har vi en custom object (JournalEntry), och därför måste vi använda oss utav Firestore.Encoder().encode som kan avläsa våran custom object till data som kan lagras i Firebase.
     
     
-    func addEntryToDb(entry: JournalEntry) {
-        
-        if let currentUser = currentUser {
-        
-            do {
-                try db.collection("userData").document(currentUser.uid).updateData(["entries": FieldValue.arrayUnion([Firestore.Encoder().encode(entry)])])
-            } catch {
-                print("shut up")
-            }
-            
-            
-            
-        }
-        
-        
-    }
-    
     
     
     

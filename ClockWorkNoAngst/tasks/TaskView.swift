@@ -19,6 +19,7 @@ struct HomeTaskView: View {
     var body: some View {
         VStack{
             
+<<<<<<< Updated upstream
           if  toggleShowCreateTask {
             Text("My tasks")  .padding().frame(maxWidth: .infinity,alignment: .topLeading).animatableFonts(size: 28, weight: .bold, design: .default)
             Spacer()
@@ -28,6 +29,25 @@ struct HomeTaskView: View {
             
             Spacer()
             HStack(alignment: .bottom, content: {
+=======
+            if  toggleShowCreateTask {
+                Text("My tasks")  .padding().frame(maxWidth: .infinity,alignment: .topLeading).animatableFonts(size: 28, weight: .bold, design: .default)
+                Spacer()
+                List{
+                  
+          
+                    ForEach(realmManager.tasks, id: \.id){
+                        task in
+                        
+                        TaskRow(   completed: task.completed, title: task.title).onTapGesture {realmManager.uppdateTask(id: task.id, completed: !task.completed)}
+                    }
+                }.onAppear{UITableView.appearance().backgroundColor = UIColor.clear
+                    
+                    UITableViewCell.appearance().backgroundColor = UIColor.clear
+                    
+                }
+                
+>>>>>>> Stashed changes
                 
                 Button(action: {toggleShowCreateTask.toggle()},  label: {Text("+").padding(.bottom,20).animatableFonts(size: 39, weight: .bold, design: .rounded).frame(maxWidth: .infinity).background(Color(colorBtn)).foregroundColor(.white).frame(width: 55,height: 55,alignment: .top).cornerRadius(45)})
             }

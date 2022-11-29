@@ -6,16 +6,19 @@ import RealmSwift
 import Firebase
 import FirebaseFirestoreSwift
 struct TaskRow: View {
+    
    @State var completed:Bool = false
    @State  var title : String = ""
      var text:[String]?
 
    // @Binding var buttonAction: () -> Void
     @EnvironmentObject var realmManager : RealmManager
+    
     var color1:CGColor =  #colorLiteral(red: 0.3116869926, green: 0.3075950146, blue: 0.3075473309, alpha: 1)
     
  // var taskrowInformation = TaskConstruction( completed: false, title: .constant(title), text: [String]?)
-                                              
+
+    
     
     var body: some View {
         VStack{

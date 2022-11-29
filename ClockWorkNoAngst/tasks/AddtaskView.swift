@@ -14,19 +14,27 @@ struct AddTaskRow: View {
     
     
     var body: some View {
+        
+        
+        ZStack{
+            Color(color1).ignoresSafeArea(.all)
         VStack(alignment: .leading, spacing:20){
+            
+            
+         
+            
             Text("Create a new task").animatableFonts(size: 24, weight: .bold, design: .monospaced)
             TextField("Enter task here",text : $title).textFieldStyle(.roundedBorder)
             
             Button(action: {
                 if title != ""{
-                    realmManager.addTask(taskTitle: title, toggleShowCreateTask: $toggleShowCreateTask)           }},label:{Text("create task").background(Color(colorBtn).foregroundColor(Color(colorBtnText)).frame(width: 170,height: 50,alignment: .bottomTrailing).cornerRadius(20))})
+                    realmManager.addTask(taskTitle: title)           }},label:{Text("create task").background(Color(colorBtn).foregroundColor(Color(colorBtnText)).frame(width: 170,height: 50,alignment: .bottomTrailing).cornerRadius(20))})
             .onTapGesture {
                 withAnimation(.spring(response: 0.4,dampingFraction: 0.6).speed(2)){
-                    toggleShowCreateTask.toggle()
+                    self.toggleShowCreateTask=true
                     
                 }
-                
+                }
                 
                 
                 
@@ -39,7 +47,7 @@ struct AddTaskRow: View {
                 
                 
                 
-            }.background(ignoresSafeAreaEdges: .all).background(Color(color1))
+        }.background(ignoresSafeAreaEdges: .all).background(Color(.systemYellow))
     }
     
     

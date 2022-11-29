@@ -191,14 +191,17 @@ import Firebase
 import RealmSwift
 
 struct ContentView: View {
-    @StateObject var realManager = RealmManager()
+    @StateObject var realmManager = RealmManager()
     @StateObject var dbConnection = DatabaseConnection()
     
     var body: some View {
         
         if dbConnection.userLoggedIn {
             
-            HomeTaskView( title: "").environmentObject(RealmManager())
+            
+            TabBar( startShow: false, switchCard: false, title: "").environmentObject(realmManager)
+            
+       //   TabBar( startShow: false, switchCard: false,  title: "").environmentObject(RealmManager())
             
         } else {
             
@@ -243,8 +246,9 @@ struct RegisterPage: View {
     @State var confirmPassword = ""
     
     var body: some View {
-        
-        VStack {
+        ZStack{
+            BackgroundAnimationLogin()
+            VStack {
             
             Text("Register an account").font(.title)
             
@@ -274,8 +278,7 @@ struct RegisterPage: View {
             
             
             
-        }
-        
+        }}
         
     }
 }
@@ -315,7 +318,7 @@ struct LoginPage: View {
                 Text("Register").padding().foregroundColor(.blue)
             })
             
-        }
+        }.background(BackgroundAnimationLogin())
         
     }
 }
